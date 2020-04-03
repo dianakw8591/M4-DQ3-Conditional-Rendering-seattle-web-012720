@@ -6,23 +6,22 @@ class MainBox extends React.Component {
   constructor() {
     super()
     this.state = {
-      displayPage: "",
+      displayPage: 'Profile',
     }
   }
 
   displayDetails = (id) => {
-    // pokemon <Pokemon />
       this.setState({
-        displayPage: this.chooseState(id)
+        displayPage: id,
       })
     }
 
-  chooseState = (id) => {
-    if (id == "Pokemon") {
+  chooseDiv = (state) => {
+    if (state === "pokemon") {
       return <Pokemon />
-    } else if (id == "Cocktail") {
+    } else if (state === "cocktail") {
       return <Cocktails />
-    } else if (id == "Profile") {
+    } else if (state === "profile") {
       return <Profile />
     } else {
       return <Photos />
@@ -39,11 +38,11 @@ class MainBox extends React.Component {
 
     */
 
-    const detailsToDisplay = <div>{this.state.displayPage}</div>
+    const detailsToDisplay = <div>{this.chooseDiv(this.state.displayPage)}</div>
 
     return (
       <div>
-        <MenuBar onDisplayDetails={this.displayDetails}/>
+        <MenuBar onDisplayDetails={this.displayDetails} menuToHighlight={this.state.displayPage}/>
         {detailsToDisplay}
       </div>
     )

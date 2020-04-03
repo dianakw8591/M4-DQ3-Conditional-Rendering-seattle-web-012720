@@ -1,5 +1,23 @@
 import React from 'react'
 
+
+// <a className={props.menuToHighlight === "profile" ? "item active":"item"}id="profile" onClick={handleClick}>
+//         <i className="user large icon" id="profile"/>
+//       </a>
+
+// <a className="item" id="photo" onClick={handleClick}>
+// <i className="photo large icon" id="photo"/>
+// </a>
+
+// <a className="item" id="cocktail" onClick={handleClick}>
+// <i className="cocktail large icon" id="cocktail"/>
+// </a>
+
+// <a className="item" id="pokemon" onClick={handleClick}> 
+// <i className=" themeisle large icon" id="pokemon"/>
+// </a>
+
+
 const MenuBar = (props) => {
 
   /*
@@ -12,28 +30,30 @@ const MenuBar = (props) => {
   this component be made aware of what is currently the active menu item?
 
   */
+
+  function buildMenuBar(id, className) {
+    return (
+      <a className={props.menuToHighlight === id ? "item active":"item"} id = {id} onClick={handleClick}>
+        <i className={className + " large icon"} id={id} />
+      </a>
+    )
+  }
+
+
+
  const handleClick = (event) => {
-   console.log(event.target.id)
+   console.log(event.target)
    props.onDisplayDetails(event.target.id)
  }
 
+ 
+
   return (
     <div className="ui four item menu">
-      <a className="item active" id="Profile" onClick={handleClick}>
-        <i className="user large icon" id="Profile"/>
-      </a>
-
-      <a className="item" id="Photo" onClick={handleClick}>
-        <i className="photo large icon" id="Photo"/>
-      </a>
-
-      <a className="item" id="Cocktail" onClick={handleClick}>
-        <i className="cocktail large icon" id="Cocktail"/>
-      </a>
-
-      <a className="item" id="Pokemon" onClick={handleClick}> 
-        <i className=" themeisle large icon" id="Pokemon"/>
-      </a>
+      {buildMenuBar("profile", "user")}
+      {buildMenuBar("photo", "photo")}
+      {buildMenuBar("cocktail", "cocktail")}
+      {buildMenuBar("pokemon", "themeisle")}
     </div>
   )
 

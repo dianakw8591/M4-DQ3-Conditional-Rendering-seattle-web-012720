@@ -12,23 +12,27 @@ const MenuBar = (props) => {
   this component be made aware of what is currently the active menu item?
 
   */
+ const handleClick = (event) => {
+   console.log(event.target.id)
+   props.onDisplayDetails(event.target.id)
+ }
 
   return (
     <div className="ui four item menu">
-      <a className="item active" id="profile">
-        <i className="user large icon" id="profile"/>
+      <a className="item active" id="Profile" onClick={handleClick}>
+        <i className="user large icon" id="Profile"/>
       </a>
 
-      <a className="item" id="photo">
-        <i className="photo large icon" id="photo"/>
+      <a className="item" id="Photo" onClick={handleClick}>
+        <i className="photo large icon" id="Photo"/>
       </a>
 
-      <a className="item" id="cocktail">
-        <i className="cocktail large icon" id="cocktail"/>
+      <a className="item" id="Cocktail" onClick={handleClick}>
+        <i className="cocktail large icon" id="Cocktail"/>
       </a>
 
-      <a className="item" id="pokemon"> 
-        <i className=" themeisle large icon" id="pokemon"/>
+      <a className="item" id="Pokemon" onClick={handleClick}> 
+        <i className=" themeisle large icon" id="Pokemon"/>
       </a>
     </div>
   )
